@@ -1,6 +1,5 @@
 import { Component, Input, OnDestroy, OnInit, forwardRef } from '@angular/core';
 import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-form-password',
@@ -14,13 +13,12 @@ import { Subscription } from 'rxjs';
     }
   ]
 })
-export class FormPasswordComponent implements ControlValueAccessor, OnInit, OnDestroy {
+export class FormPasswordComponent implements ControlValueAccessor, OnInit {
 
   @Input() passwordInput: FormControl = new FormControl('')
 
   public password: string = '';
 
-  private _subscription!: Subscription
   private onTouchedCallback: () => void = () => { };
   private onChangeCallback: (fn: any) => void = () => { };
 
@@ -53,9 +51,5 @@ export class FormPasswordComponent implements ControlValueAccessor, OnInit, OnDe
 
   registerOnTouched(fn: any) {
     this.onTouchedCallback = fn;
-  }
-
-  ngOnDestroy() {
-    this._subscription.unsubscribe()
   }
 }
