@@ -1,0 +1,11 @@
+<div class="form">
+    <form [formGroup]="form">
+        <app-form-password formControlName="password"></app-form-password>
+    </form>
+    
+    <h2>
+        {{currentMessage || 'Enter the password'}}
+    </h2>
+    
+    <app-indicators [valueControl]="password"></app-indicators>
+</div>
